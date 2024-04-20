@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/dataListFragment">
 
+    <fragment
+        android:id="@+id/dataListFragment"
+        android:name="com.example.a160421085_uts_anmp.view.DataListFragment"
+        android:label="fragment_data_list"
+        tools:layout="@layout/fragment_data_list" >
+        <action
+            android:id="@+id/actionDataDetail"
+            app:destination="@id/dataDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataDetailFragment"
+        android:name="com.example.a160421085_uts_anmp.view.DataDetailFragment"
+        android:label="fragment_data_detail"
+        tools:layout="@layout/fragment_data_detail" />
 </navigation>

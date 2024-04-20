@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    [
+    {
+    "id": 1,
+    "name": "The Witcher 3: Wild Hunt",
+    "genre": "Role-Playing Game (RPG)",
+    "platforms": ["PC", "PlayStation 4", "Xbox One"],
+    "images": ["witcher3_1.jpg", "witcher3_2.jpg", "witcher3_3.jpg"]
+    },
+    {
+    "id": 2,
+    "name": "The Legend of Zelda: Breath of the Wild",
+    "genre": "Action-Adventure",
+    "platforms": ["Nintendo Switch", "Wii U"],
+    "images": ["zelda_botw_1.jpg", "zelda_botw_2.jpg", "zelda_botw_3.jpg"]
+    },
+    {
+    "id": 3,
+    "name": "Red Dead Redemption 2",
+    "genre": "Action-Adventure",
+    "platforms": ["PlayStation 4", "Xbox One", "PC", "Google Stadia"],
+    "images": ["rdr2_1.jpg", "rdr2_2.jpg", "rdr2_3.jpg"]
+    },
+    {
+    "id": 4,
+    "name": "Grand Theft Auto V",
+    "genre": "Action-Adventure",
+    "platforms": ["PlayStation 3", "PlayStation 4", "Xbox 360", "Xbox One", "PC"],
+    "images": ["gta5_1.jpg", "gta5_2.jpg", "gta5_3.jpg"]
+    },
+    {
+    "id": 5,
+    "name": "Cyberpunk 2077",
+    "genre": "Role-Playing Game (RPG)",
+    "platforms": ["PC", "PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S", "Google Stadia"],
+    "images": ["cyberpunk2077_1.jpg", "cyberpunk2077_2.jpg", "cyberpunk2077_3.jpg"]
+    },
+    {
+    "id": 6,
+    "name": "The Last of Us Part II",
+    "genre": "Action-Adventure",
+    "platforms": ["PlayStation 4"],
+    "images": ["tlou2_1.jpg", "tlou2_2.jpg", "tlou2_3.jpg"]
+    },
+    {
+    "id": 7,
+    "name": "Assassin's Creed Valhalla",
+    "genre": "Action-Adventure",
+    "platforms": ["PC", "PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
+    "images": ["ac_valhalla_1.jpg", "ac_valhalla_2.jpg", "ac_valhalla_3.jpg"]
+    },
+    {
+    "id": 8,
+    "name": "Final Fantasy VII Remake",
+    "genre": "Role-Playing Game (RPG)",
+    "platforms": ["PlayStation 4"],
+    "images": ["ff7remake_1.jpg", "ff7remake_2.jpg", "ff7remake_3.jpg"]
+    },
+    {
+    "id": 9,
+    "name": "Among Us",
+    "genre": "Social Deduction",
+    "platforms": ["iOS", "Android", "PC"],
+    "images": ["amongus_1.jpg", "amongus_2.jpg", "amongus_3.jpg"]
+    },
+    {
+    "id": 10,
+    "name": "Minecraft",
+    "genre": "Sandbox, Survival",
+    "platforms": ["PC", "iOS", "Android", "PlayStation 3", "PlayStation 4", "Xbox 360", "Xbox One", "Nintendo Switch"],
+    "images": ["minecraft_1.jpg", "minecraft_2.jpg", "minecraft_3.jpg"]
+    }
+    ]
+
+</resources>
