@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/dataListFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/dataListFragment"
@@ -19,4 +19,13 @@
         android:name="com.example.a160421085_uts_anmp.view.DataDetailFragment"
         android:label="fragment_data_detail"
         tools:layout="@layout/fragment_data_detail" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.a160421085_uts_anmp.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/actiondatalist"
+            app:destination="@id/dataListFragment" />
+    </fragment>
 </navigation>
