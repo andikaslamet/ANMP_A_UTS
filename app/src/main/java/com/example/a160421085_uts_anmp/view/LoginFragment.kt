@@ -40,21 +40,27 @@ class LoginFragment : Fragment() {
                 val password = binding.txtpassword.text.toString()
                 if (username.isNotEmpty() && password.isNotEmpty()) {
                     viewmodel.cekUser(username, password)
-                    viewmodel.usernameLD.observe(viewLifecycleOwner, Observer {
-                            if ( it != null && it.isNotEmpty() ) {
-                                val action = LoginFragmentDirections.actiondatalist()
-                                Navigation.findNavController(requireView()).navigate(action) // Menggunakan requireView()
-                            } else {
-                                Toast.makeText(requireContext(), "mohon isi dengan benar", Toast.LENGTH_SHORT).show()
-                            }
+                    viewmodel.usernameLD.observe(viewLifecycleOwner, Observer { userList ->
+                        if (userList != null && userList.isNotEmpty()) {
+                            // Pengguna ditemukan, navigasi ke tujuan yang sesuai
+                            Toast.makeText(requireContext(), "berhasil", Toast.LENGTH_SHORT).show()
+                            val action = LoginFragmentDirections.actiondatalist()
+                            Navigation.findNavController(requireView()).navigate(action)
+                        } else {
+                            // Jika pengguna tidak ditemukan, tampilkan pesan kesalahan
+                            Toast.makeText(requireContext(), "gagal login", Toast.LENGTH_SHORT).show()
+                        }
                     })
                 } else {
-                    Toast.makeText(requireContext(), "username dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                    // Jika username atau password kosong, tampilkan pesan kesalahan
+                    Toast.makeText(requireContext(), "Username dan password harus diisi", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "TERJADI ERROR", Toast.LENGTH_SHORT).show()
+                // Tangani kesalahan jika terjadi
+                Toast.makeText(requireContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
             }
         }
+
         binding.btnregist.setOnClickListener()
         {
             val action = LoginFragmentDirections.actionregistrasi()

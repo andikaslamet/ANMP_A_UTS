@@ -19,14 +19,11 @@ class DataListAdapter(val dataList: ArrayList<Data>):RecyclerView.Adapter<DataLi
         dataList.addAll(newDataList)
         notifyDataSetChanged()
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         val binding = DataListItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false)
         return DataViewHolder(binding)
-
     }
-
     override fun getItemCount(): Int {
         return dataList.size
     }
