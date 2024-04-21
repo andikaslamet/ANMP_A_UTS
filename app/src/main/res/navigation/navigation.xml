@@ -18,7 +18,23 @@
         android:id="@+id/dataDetailFragment"
         android:name="com.example.a160421085_uts_anmp.view.DataDetailFragment"
         android:label="fragment_data_detail"
-        tools:layout="@layout/fragment_data_detail" />
+        tools:layout="@layout/fragment_data_detail" >
+        <argument
+            android:name="ID"
+            app:argType="string" />
+        <argument
+            android:name="NAME"
+            app:argType="string" />
+        <argument
+            android:name="GENRE"
+            app:argType="string" />
+        <argument
+            android:name="PLATFORMS"
+            app:argType="string" />
+        <argument
+            android:name="IMAGE"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.a160421085_uts_anmp.view.LoginFragment"
@@ -27,5 +43,17 @@
         <action
             android:id="@+id/actiondatalist"
             app:destination="@id/dataListFragment" />
+        <action
+            android:id="@+id/actionregistrasi"
+            app:destination="@id/registrasiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrasiFragment"
+        android:name="com.example.a160421085_uts_anmp.view.RegistrasiFragment"
+        android:label="fragment_registrasi"
+        tools:layout="@layout/fragment_registrasi" >
+        <action
+            android:id="@+id/actionloginfragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>

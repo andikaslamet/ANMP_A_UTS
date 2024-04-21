@@ -41,12 +41,12 @@ class LoginFragment : Fragment() {
                 if (username.isNotEmpty() && password.isNotEmpty()) {
                     viewmodel.cekUser(username, password)
                     viewmodel.usernameLD.observe(viewLifecycleOwner, Observer {
-                        if (it.isNotEmpty()) {
-                            val action = LoginFragmentDirections.actiondatalist()
-                            Navigation.findNavController(requireView()).navigate(action) // Menggunakan requireView()
-                        } else {
-                            Toast.makeText(requireContext(), "mohon registrasi", Toast.LENGTH_SHORT).show()
-                        }
+                            if ( it != null && it.isNotEmpty() ) {
+                                val action = LoginFragmentDirections.actiondatalist()
+                                Navigation.findNavController(requireView()).navigate(action) // Menggunakan requireView()
+                            } else {
+                                Toast.makeText(requireContext(), "mohon isi dengan benar", Toast.LENGTH_SHORT).show()
+                            }
                     })
                 } else {
                     Toast.makeText(requireContext(), "username dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()
@@ -55,5 +55,15 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireContext(), "TERJADI ERROR", Toast.LENGTH_SHORT).show()
             }
         }
+        binding.btnregist.setOnClickListener()
+        {
+            val action = LoginFragmentDirections.actionregistrasi()
+            Navigation.findNavController(requireView()).navigate(action)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewmodel.clearUser()
     }
 }

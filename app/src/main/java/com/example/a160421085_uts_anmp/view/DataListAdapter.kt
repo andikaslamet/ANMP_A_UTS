@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.a160421085_uts_anmp.R
 import com.example.a160421085_uts_anmp.databinding.DataListItemBinding
 import com.example.a160421085_uts_anmp.model.Data
+import com.squareup.picasso.Picasso
 
 class DataListAdapter(val dataList: ArrayList<Data>):RecyclerView.Adapter<DataListAdapter.DataViewHolder>() {
     class DataViewHolder(var binding: DataListItemBinding)
@@ -34,11 +35,11 @@ class DataListAdapter(val dataList: ArrayList<Data>):RecyclerView.Adapter<DataLi
         holder.binding.txtID.text = dataList[position].id
         holder.binding.txtTitle.text = dataList[position].title
         holder.binding.txtGenre.text = dataList[position].genre
+        Picasso.get().load(dataList[position].image).into(holder.binding.imageView6)
 
         holder.binding.detailBtn2.setOnClickListener(){
-            val action = DataListFragmentDirections.actionDataDetail()
+            val action = DataListFragmentDirections.actionDataDetail(dataList[position].id?:"",dataList[position].title?:"",dataList[position].genre?:"",dataList[position].platforms?:"",dataList[position].image?:"")
             Navigation.findNavController(it).navigate(action)
-
         }
     }
 }

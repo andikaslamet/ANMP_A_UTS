@@ -5,56 +5,64 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.a160421085_uts_anmp.R
+import com.example.a160421085_uts_anmp.databinding.FragmentLoginBinding
+import com.example.a160421085_uts_anmp.databinding.FragmentRegistrasiBinding
+import com.example.a160421085_uts_anmp.viewmodel.userviewmodel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RegistrasiFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RegistrasiFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var binding:FragmentRegistrasiBinding
+    private lateinit var viewmodel: userviewmodel
+    val registrationResult: MutableLiveData<Boolean> = MutableLiveData()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registrasi, container, false)
+        binding = FragmentRegistrasiBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegistrasiFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegistrasiFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewmodel = ViewModelProvider(this).get(userviewmodel::class.java)
+
+        binding.btnregistrasi.setOnClickListener {
+            try {
+                val username = binding.txtregisusername.text.toString()
+                val firstName = binding.txtregisnamadepan.text.toString()
+                val lastName = binding.txtregisnamabelakang.text.toString()
+                val email = binding.txtregisemail.text.toString()
+                val password = binding.txtregispw.text.toString()
+
+                if (username.isNotEmpty() && firstName.isNotEmpty() && lastName.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+                    viewmodel.registerUser(username, firstName, lastName, email, password)
+
+                    viewmodel.registrationResult.observe(viewLifecycleOwner, Observer { result ->
+                        if (result) {
+                            Toast.makeText(requireContext(), "Registrasi berhasil", Toast.LENGTH_SHORT).show()
+                            val action = RegistrasiFragmentDirections.actionloginfragment()
+                            Navigation.findNavController(requireView()).navigate(action)
+                        } else {
+                            Toast.makeText(requireContext(), "Registrasi gagal", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+                } else {
+                    // Tampilkan pesan kesalahan jika ada field yang kosong
+                    Toast.makeText(requireContext(), "Semua field harus diisi", Toast.LENGTH_SHORT).show()
                 }
+            } catch (e: Exception) {
+                // Tangani kesalahan jika terjadi
+                Toast.makeText(requireContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
             }
+        }
+
     }
+
+
 }
